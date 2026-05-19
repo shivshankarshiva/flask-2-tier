@@ -33,6 +33,10 @@ def hello():
     cur.close()
     return render_template('index.html', messages=messages)
 
+@app.route('/health')
+def health():
+    return jsonify({"status": "healthy"}), 200
+
 @app.route('/submit', methods=['POST'])
 def submit():
     new_message = request.form.get('new_message')
